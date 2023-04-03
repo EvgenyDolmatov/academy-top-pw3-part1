@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
     $success = [];
     if (count($errors) === 0) {
         $ps = 'INSERT INTO users(login, surname, name, password, country, city) 
-                VALUES("' . $login . '", "' . $surname . '", "' . $name . '", "' . $pass . '", "' . $country . '", "' . $city . '")';
+                VALUES("' . $login . '", "' . $surname . '", "' . $name . '", "' . md5($pass) . '", "' . $country . '", "' . $city . '")';
         mysqli_query(connect(), $ps);
         $success["success"] = "Вы успешно зарегистрированы!";
     }
@@ -53,42 +53,48 @@ if (isset($_POST["submit"])) {
                         <form action="" method="POST" class="register-form">
                             <div class="form-group mb-3">
                                 <label for="login">Логин</label>
-                                <input type="text" name="login" id="login" class="form-control">
+                                <input type="text" name="login" id="login" class="form-control"
+                                       value="<?php echo isset($login) ? $login : "" ?>">
                                 <?php if (isset($errors["login"])) : ?>
                                     <small class="text-danger"><?php echo $errors["login"] ?></small>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="surname">Фамилия</label>
-                                <input type="text" name="surname" id="surname" class="form-control">
+                                <input type="text" name="surname" id="surname" class="form-control"
+                                       value="<?php echo isset($surname) ? $surname : "" ?>">
                                 <?php if (isset($errors["surname"])) : ?>
                                     <small class="text-danger"><?php echo $errors["surname"] ?></small>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="name">Имя</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" class="form-control"
+                                       value="<?php echo isset($name) ? $name : "" ?>">
                                 <?php if (isset($errors["name"])) : ?>
                                     <small class="text-danger"><?php echo $errors["name"] ?></small>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="password">Пароль</label>
-                                <input type="password" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control"
+                                       value="<?php echo isset($pass) ? $pass : "" ?>">
                                 <?php if (isset($errors["pass"])) : ?>
                                     <small class="text-danger"><?php echo $errors["pass"] ?></small>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="country">Страна</label>
-                                <input type="text" name="country" id="country" class="form-control">
+                                <input type="text" name="country" id="country" class="form-control"
+                                       value="<?php echo isset($country) ? $country : "" ?>">
                                 <?php if (isset($errors["country"])) : ?>
                                     <small class="text-danger"><?php echo $errors["country"] ?></small>
                                 <?php endif; ?>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="city">Город</label>
-                                <input type="text" name="city" id="city" class="form-control">
+                                <input type="text" name="city" id="city" class="form-control"
+                                       value="<?php echo isset($city) ? $city : "" ?>">
                                 <?php if (isset($errors["city"])) : ?>
                                     <small class="text-danger"><?php echo $errors["city"] ?></small>
                                 <?php endif; ?>

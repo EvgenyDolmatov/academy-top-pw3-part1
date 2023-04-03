@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function connect($host = "localhost", $name = "root", $pass = "", $db = "test")
 {
