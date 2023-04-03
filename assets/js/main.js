@@ -1,5 +1,5 @@
-let formInputs = document.querySelectorAll(".register-form input");
-let formBtn = document.querySelector(".register-form button");
+let formInputs = document.querySelectorAll(".validate-form input");
+let formBtn = document.querySelector(".validate-form button");
 
 formInputs.forEach(function (input){
     input.addEventListener("input", function (){
@@ -11,3 +11,4 @@ formInputs.forEach(function (input){
         formBtn.disabled = emptyFields !== 0;
     })
 });
+

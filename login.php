@@ -1,6 +1,6 @@
-<?php require_once "template-part/header.php" ?>
-
 <?php
+require_once "template-part/header.php";
+
 
 if (isset($_SESSION["name"]))
     echo "<script>window.location = window.location.origin</script>";

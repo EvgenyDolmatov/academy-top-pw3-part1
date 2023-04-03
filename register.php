@@ -1,6 +1,7 @@
-<?php require_once "template-part/header.php" ?>
-
 <?php
+require_once "template-part/header.php";
+
+
 if (isset($_POST["submit"])) {
     $login = trim(htmlspecialchars($_POST["login"]));
     $surname = trim(htmlspecialchars($_POST["surname"]));
@@ -50,7 +51,7 @@ if (isset($_POST["submit"])) {
                 <div class="col-lg-4 col-12 offset-lg-4">
                     <?php if (!isset($success["success"])) : ?>
                         <h1 class="text-center mb-5">Регистрация</h1>
-                        <form action="" method="POST" class="register-form">
+                        <form action="" method="POST" class="validate-form">
                             <div class="form-group mb-3">
                                 <label for="login">Логин</label>
                                 <input type="text" name="login" id="login" class="form-control"
