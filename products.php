@@ -3,11 +3,11 @@ require_once "template-part/header.php";
 
 
 $psProd = 'SELECT * FROM products';
-$prodParams = "";
+$prodParams = "?";
 
 
 if (count($_GET)) {
-    $prodParams = "?";
+
     $psConditions = [];
     $psSort = [];
     foreach ($_GET as $prop => $val) {
@@ -103,13 +103,13 @@ $products = mysqli_fetch_all($prodQuery, MYSQLI_ASSOC);
                             <?php if (isset($_GET) && $_GET["sort"] === "asc") : ?>
                                 <span>возрастанию</span>
                             <?php else: ?>
-                                <a href="<?php echo $_SERVER['REQUEST_URI'] . "&sort_brand=ASC" ?>">возрастанию</a>
+                                <a href="/products.php?&sort_brand=ASC">возрастанию</a>
                             <?php endif; ?> /
 
                             <?php if (isset($_GET) && $_GET["sort"] === "desc") : ?>
                                 <span>убыванию</span>
                             <?php else: ?>
-                                <a href="<?php echo $_SERVER['REQUEST_URI'] . "&sort_brand=DESC" ?>">убыванию</a>
+                                <a href="/products.php?&sort_brand=DESC">убыванию</a>
                             <?php endif; ?>
                         </p>
 
@@ -117,13 +117,13 @@ $products = mysqli_fetch_all($prodQuery, MYSQLI_ASSOC);
                             <?php if (isset($_GET) && $_GET["price"] === "asc") : ?>
                                 <span>возрастанию</span>
                             <?php else: ?>
-                                <a href="<?php echo $_SERVER['REQUEST_URI'] . "&sort_price=DESC" ?>">возрастанию</a>
+                                <a href="/products.php?&sort_price=ASC">возрастанию</a>
                             <?php endif; ?> /
 
                             <?php if (isset($_GET) && $_GET["price"] === "desc") : ?>
                                 <span>убыванию</span>
                             <?php else: ?>
-                                <a href="<?php echo $_SERVER['REQUEST_URI'] . "&sort_price=DESC" ?>">убыванию</a>
+                                <a href="/products.php?&sort_price=DESC">убыванию</a>
                             <?php endif; ?>
                         </p>
                     </div>
