@@ -43,9 +43,26 @@ $createProductsTable = 'CREATE TABLE products(
     brand VARCHAR(128) NOT NULL,
     model VARCHAR(128) NOT NULL,
     price FLOAT DEFAULT 0,
+    country VARCHAR(128),
     category_id INT,
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 ) DEFAULT charset="utf8"';
 $productsQuery = mysqli_query(connect(), 'SELECT * FROM information_schema.tables WHERE table_schema = "' . $db_name . '" AND table_name = "products" LIMIT 1');
 if (mysqli_fetch_array($productsQuery) == null)
     mysqli_query(connect(), $createProductsTable);
+
+
+/*
+ * Наполняем БД данными
+ */
+$ins = 'INSERT INTO users(login, surname, name, password, country, city) VALUES("evgeniy", "Долматов", "Евгений", "' . md5("000000") . '", "Россия", "Тольятти")';
+mysqli_query(connect(), $ins);
+
+$ins = 'INSERT INTO sectors(name) VALUES ("Бытовая техника"),("Электроника")';
+mysqli_query(connect(), $ins);
+
+$ins = 'INSERT INTO categories(name, sector_id) VALUES ("Холодильники", 1),("Стиральные машины", 1),("Чайники", 1),("Смартфоны", 2),("Ноутбуки", 2),("Телевизоры", 2)';
+mysqli_query(connect(), $ins);
+
+$ins = 'INSERT INTO products(brand, model, price, country, category_id) VALUES ("Apple", "iPhone XS", 86000, "США", 4),("Apple", "iPhone SE", 51000, "США", 4),("Samsung", "Galaxy 8", 37000, "Корея", 4),("Realme", "9 PRO", 25000, "Китай", 4),("Xiaomi", "Redmi 7", 16000, "Китай", 4),("OPPO", "10", 14000, "Китай", 4)';
+mysqli_query(connect(), $ins);
